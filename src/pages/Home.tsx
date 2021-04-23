@@ -118,44 +118,44 @@ const Subtitle = styled.p`
     margin-bottom: 20px;
 `;
 
+const bg = [
+    HomeBgImg1, 
+    HomeBgImg2, 
+    HomeBgImg3,
+    HomeBgImg4,
+    HomeBgImg5, 
+    HomeBgImg6, 
+    HomeBgImg7,
+    HomeBgImg8,
+    HomeBgImg9, 
+    HomeBgImg10, 
+    HomeBgImg11,
+    HomeBgImg12,
+    HomeBgImg13, 
+    HomeBgImg14, 
+    HomeBgImg15,
+    HomeBgImg16,
+    HomeBgImg17, 
+    HomeBgImg18
+];
+var active = 0;
 
 const Home = () => {
 
     React.useEffect(() => {
-        changeBackground();
-    }, []);
-
-    const changeBackground = () => {
-        const bg = [
-            HomeBgImg1, 
-            HomeBgImg2, 
-            HomeBgImg3,
-            HomeBgImg4,
-            HomeBgImg5, 
-            HomeBgImg6, 
-            HomeBgImg7,
-            HomeBgImg8,
-            HomeBgImg9, 
-            HomeBgImg10, 
-            HomeBgImg11,
-            HomeBgImg12,
-            HomeBgImg13, 
-            HomeBgImg14, 
-            HomeBgImg15,
-            HomeBgImg16,
-            HomeBgImg17, 
-            HomeBgImg18
-        ];
-        var active = 0;
-        setInterval(function(){
+        const changeBackground = setInterval(function(){
             const element = document.getElementById('slider');
             if(element) {
                 element.style.backgroundImage = `url(${bg[active]})`;
                 active++;
                 if (active === Number(bg.length)) active = 0;
             }
-        }, 10000);  
-    };
+        }, 8000);  
+        return () => {
+            clearInterval(changeBackground)
+        }
+    }, []);
+
 
     return (
         <Container>
